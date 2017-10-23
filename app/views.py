@@ -4,17 +4,21 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from models import *
+import traceback
 import json
 import time
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from .tools import get_wechat_session_info, get_wechat_user_info
 from .error_code import error_code
+import logging
 
+logger = logging.getLogger('django')
 # Create your views here.
-def  get_config_value(request,subdomain=None,key=None):
+def  get_config_value(request,subdomain=None):
         try:
             if request.method == 'GET':
                     app =  AppConfig.objects.get(sub_domain="test")
+                    key = request.GET.get('key')
                     if not app:
                             return  HttpResponse(json.dumps({'code': 404, 'msg': 'domain not found'}))
                     data = json.dumps({
@@ -37,10 +41,11 @@ def  get_config_value(request,subdomain=None,key=None):
         except Exception,e:
                 return HttpResponse(json.dumps({'code': 404, 'msg':str(e)}))
 
-def check_token(request, sub_domain=None, token=None, **kwargs):
+def check_token(request, sub_domain=None):
         try:
                 if request.method == 'GET':
                     app =  AppConfig.objects.get(sub_domain="test")
+                    token = request.GET.get("token")
                     if not token:
                             return  HttpResponse(json.dumps({'code': 300, 'msg': 'missing token'}))
                     access_token =  AccessToken.objects.get(token=token)
@@ -50,11 +55,14 @@ def check_token(request, sub_domain=None, token=None, **kwargs):
         except Exception,e:
                 return HttpResponse(json.dumps({'code': 404, 'msg':str(e),'data':''}))
 
-def  login(request,sub_domain=None, code=None, **kwargs):
+def  login(request,sub_domain=None):
         try:
                 if request.method == 'GET':
                         app =  AppConfig.objects.get(sub_domain="test")
+                        code = request.GET.get("code")
+                        logger.info("code: "+str(code))
                         session_info = get_wechat_session_info(app.app_id, app.secret, code)
+                        logger.info(session_info)
                         if session_info.get('errcode'):
                                 return HttpResponse(
                                     json.dumps({'code': -1, 'msg': error_code[-1], 'data': session_info.get('errmsg')})
@@ -75,12 +83,16 @@ def  login(request,sub_domain=None, code=None, **kwargs):
                             a.save()
                         return HttpResponse(json.dumps({'code': 0,'token': token}))
         except Exception,e:
+             traceback.print_exc()
              return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
 
-def  register_cplx(request, sub_domain=None, code=None, encrypted_data=None, iv=None, **kwargs):
+def  register_cplx(request, sub_domain=None):
         try:
                 if request.method == 'GET':
                         app =  AppConfig.objects.get(sub_domain="test")
+                        code = request.GET.get("code","")
+                        encrypted_data = request.GET.get("encrypted_data","")
+                        iv = request.GET.get("iv","")
                         if not code:
                                 return HttpResponse(json.dumps({'code': 300, 'msg': error_code[300].format('code')}))
 
@@ -117,13 +129,13 @@ def  banner_list(request,sub_domain=None, default_banner=True):
                             "id": each_banner.id,
                             "linkUrl": '',
                             "paixu": 0,
-                            "picUrl": "https://b-ssl.duitang.com/uploads/item/201609/14/20160914201653_4Brj8.png",
+                            "picUrl": each_banner.display_pic,
                             "remark": each_banner.remark,
                             "status": 0,
-                            "statusStr": "on",
+                            "statusStr": u"显示",
                             "title": each_banner.title,
-                            "type": "",
-                            "userId": 0,
+                            "type": "0",
+                            "userId": app.id,
                             } for each_banner in banner_list                           
                         ]
                     data=json.dumps({

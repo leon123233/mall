@@ -23,7 +23,7 @@ from .json_import import simplejson
 from .helper import (error_parser, get_encoding, url_encode, iteritems,
                      text_type, smart_str)
 
-import logging
+
 TIMEOUT = 2
 logger = logging.getLogger('django')
 
@@ -149,7 +149,6 @@ class OAuth2AuthExchangeRequest(object):
         for k, v in iteritems(app_params):
             str_app_parmas[k] = text_type(v).encode('utf-8')
         url_params = urlencode(str_app_parmas)
-        logger.info('::'+self.api.access_token_url)
         if code:
             return "%s?%s" % (self.api.access_token_url, url_params)
         elif js_code:
@@ -212,7 +211,6 @@ class OAuth2AuthExchangeRequest(object):
             raise ConnectionError('conntect_error',
                                   'Failed to establish a new connection')
         parsed_content = simplejson.loads(response.content.decode())
-        logger.info(parsed_content)
         if parsed_content.get('errcode', 0):
             raise OAuth2AuthExchangeError(
                 parsed_content.get("errcode", 0),

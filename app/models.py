@@ -33,7 +33,8 @@ class WechatUser(models.Model):
         status =  models.CharField(max_length=255,default='default')
                
 class Picture(models.Model):
-        display_pic =  models.CharField(max_length=255)
+        name =  models.CharField(max_length=255)
+        #pic = models.ImageField(upload_to='img')
 
 class Goods(models.Model):
         name =  models.CharField(max_length=255)

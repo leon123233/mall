@@ -1,0 +1,4 @@
+itsdangerous
+pycrypto
+django
+mysql-python

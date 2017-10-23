@@ -24,7 +24,7 @@ class WechatUser(models.Model):
         language =  models.CharField(max_length=255)
         province = models.CharField(max_length=255)
         city = models.CharField(max_length=255)
-        register_type =  models.CharField(max_length=255)4
+        register_type =  models.CharField(max_length=255)
         register_ip =  models.CharField(max_length=255)
         last_login =  models.DateField()
         phone =  models.CharField(max_length=255)
@@ -32,6 +32,9 @@ class WechatUser(models.Model):
         ip =  models.CharField(max_length=255)
         status =  models.CharField(max_length=255,default='default')
                
+class Picture(models.Model):
+        display_pic =  models.CharField(max_length=255)
+
 class Goods(models.Model):
         name =  models.CharField(max_length=255)
         characteristic =  models.CharField(max_length=255)
@@ -47,8 +50,6 @@ class Goods(models.Model):
         number_good_reputation =  models.IntegerField(default=0)
         weight =  models.FloatField()
 
-class Picture(models.Model):
-        display_pic =  models.CharField(max_length=255)
 
 class Address(models.Model):
         user = models.ForeignKey(WechatUser, on_delete=models.CASCADE)
@@ -67,7 +68,7 @@ class Banner(models.Model):
 
 class Order(models.Model):
         user = models.ForeignKey(WechatUser, on_delete=models.CASCADE)
-        order_num = models.AutoField()
+        #order_num = models.AutoField()
         goods = models.ManyToManyField(Goods)
         number_goods = models.IntegerField()
         goods_price = models.FloatField()
@@ -80,7 +81,7 @@ class Order(models.Model):
 class Payment(models.Model):
         #dan wei   fen
         order = models.ForeignKey(Order, on_delete=models.CASCADE)
-        payment_number = models.AutoField()
+        #payment_number = models.AutoField()
         user_id = models.CharField(max_length=255)
         status = models.CharField(max_length=255)
 

@@ -74,8 +74,8 @@ def  login(request,sub_domain=None, code=None, **kwargs):
                             a = AccessToken(token=token,open_id=open_id,session_key=session_key)
                             a.save()
                         return HttpResponse(json.dumps({'code': 0,'token': token}))
-           except Exception,e:
-                 return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
+        except Exception,e:
+             return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
 
 def  register_cplx(request, sub_domain=None, code=None, encrypted_data=None, iv=None, **kwargs):
         try:

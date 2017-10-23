@@ -25,7 +25,7 @@ SECRET_KEY = '^3ic02c(3j8kv*%!grasvia6o=i=o)@q=mpns%+vq=6d$dkp@l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wechatmall.bestaliceroom.xyz']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -76,10 +77,11 @@ WSGI_APPLICATION = 'wechat_mall.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'demotest',
-        'USER':'root',
+        'NAME': 'wechatmall',
+        'USER':'leon',
         'HOST':'127.0.0.1',
         'PORT':'3306',
+        'PASSWORD':'123233',
     }
 }
 

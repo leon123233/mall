@@ -10,9 +10,7 @@ urlpatterns = [
     url(r'^user/wxapp/register/complex$', views.register_cplx),
      
     url(r'^banner/list$', views.banner_list),
-    #url(r'^/shop/goods/category/all$', views.template_msg),
-    #url(r'^/shop/goods/list$', views.template_msg),
-    #url(r'^/pages/goods-details/index', views.template_msg),
-
-
+    url(r'^shop/goods/category/all$', views.all_category),
+    url(r'^shop/goods/list$', views.goods_list),
+    url(r'^shop/goods/detail', views.goods_detail),
 ]

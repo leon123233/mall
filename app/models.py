@@ -34,22 +34,31 @@ class WechatUser(models.Model):
                
 class Picture(models.Model):
         name =  models.CharField(max_length=255)
-        #pic = models.ImageField(upload_to='img')
+        pic = models.ImageField(upload_to='img')
+
+class Category(models.Model):
+        sub_domain = CharField(max_length=255)
+	key = models.CharField(max_length=255)
+        name =  models.CharField(max_length=255)
+        c_type = models.CharField(max_length=255)
+        icon = models.CharField(max_length=255)
 
 class Goods(models.Model):
         name =  models.CharField(max_length=255)
         characteristic =  models.CharField(max_length=255)
         webchat_pay_id =  models.CharField(max_length=255)
         app_id =  models.ForeignKey(AppConfig, on_delete=models.CASCADE)
-        category =  models.CharField(max_length=255)
+        category =  models.ForeignKey(Category)
         display_pic =  models.CharField(max_length=255)
         pic = models.ManyToManyField(Picture)
         content =  models.CharField(max_length=255)
+        number_order = models.IntegerField()
         #price_ids =  models.CharField(max_length=255)
         original_price =  models.FloatField()
         min_price =  models.FloatField()
         number_good_reputation =  models.IntegerField(default=0)
         weight =  models.FloatField()
+        stores = models.IntegerField()
 
 
 class Address(models.Model):

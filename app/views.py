@@ -147,3 +147,152 @@ def  banner_list(request,sub_domain=None, default_banner=True):
         except Exception,e:
                 return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
 
+def all_category(requests,sub_domain=None):
+    try:
+	if request.method == "GET":
+           app =  AppConfig.objects.get(sub_domain="test")
+           all_category = Category.objects.filter(sub_domain="test")
+           data=json.dumps(
+                    {
+                        "code": 0,
+                        "data": [
+                            {
+                                "dateAdd": "",
+                                "dateUpdate": "",
+                                "icon": each_category.icon,
+                                "id": each_category.id,
+                                "isUse": True,
+                                "key": each_category.key,
+                                "level": 1,
+                                "name": each_category.name,
+                                "paixu": 0,
+                                "pid": 0,
+                                "type": each_category.category_type,
+                                "userId": app.id
+                            } for each_category in all_category
+                        ],
+                        "msg": "success"
+                    })
+	   return HttpResponse(data)
+    except Exception,e:
+       return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
+
+           
+		    
+
+def goods_list(request,sub_domain=None):
+    try:
+	if request.method == "GET":
+           app =  AppConfig.objects.get(sub_domain="test")
+           category_id = request.GET.get("categoryId",None)
+           if category_id:
+               category = Category.object.get(id=category_id)
+               goods = Goods.objects.filter(app_id=app,category=category)
+           else:
+               goods = Goods.objects.filter(app_id=app)
+           data=json.dumps({
+                    "code": 0,
+                    "data": [
+                        {
+                            "categoryId": each_goods.category.id,
+                            "characteristic": each_goods.characteristic,
+                            "dateAdd": "2017-01-16 12:09:31",
+                            "dateUpdate": "2017-01-16 12:09:31",
+                            "id": each_goods.id,
+                            "logisticsId": 0,
+                            "minPrice": each_goods.min_price,
+                            "name": each_goods.name,
+                            "numberFav": 0,
+                            "numberGoodReputation": each_goods.number_good_reputation,
+                            "numberOrders": each_goods.number_order,
+                            "originalPrice": each_goods.original_price,
+                            "paixu": 0,
+                            "pic": each_goods.display_pic,
+                            "recommendStatus": 0,
+                            "recommendStatusStr": "",
+                            "shopId": 0,
+                            "status": 0,
+                            "statusStr": u"上架",
+                            "stores": each_goods.stores,
+                            "userId": app.id,
+                            "views": 0,
+                            "weight": 0
+                        } for each_goods in goods_list
+                    ],
+                    "msg": "success"
+                })           
+           
+	   return HttpResponse(data)
+    except Exception,e:
+       return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
+
+def goods_detail(request,sub_domain=None):
+    try:
+	if request.method == "GET":
+           app =  AppConfig.objects.get(sub_domain="test")
+           goods_id = request.GET.get("id",None)
+           goods = Goods.objects.get(id=goods_id)
+           data = {
+                "code": 0,
+                "data": {
+                    "category": {
+                        "dateAdd": "2017-01-16 12:09:31",
+                        "dateUpdate": "2017-01-16 12:09:31",
+                        "icon": goods.category.icon,
+                        "id": goods.category.id,
+                        "isUse": True,
+                        "key": goods.category.key,
+                        "name": goods.category.name,
+                        "paixu": 0,
+                        "pid": 0,
+                        "type": goods.category.c_type,
+                        "userId": app.id
+                    },
+                    "pics": [
+                        {
+                            "goodsId": goods.id,
+                            "id": each_pic.id,
+                            "pic": each_pic.pic
+                        } for each_pic in goods.pic
+                    ],
+                    "logistics": {
+                        "logisticsBySelf": 0,
+                        "isFree": True,
+                        "by_self": 0,
+                        "feeType": 0,
+                        "feeTypeStr": "",
+                        "details": []
+                    },
+                    "content": "<p>%s</p>" % goods.content,
+                    "basicInfo": {
+                        "categoryId": goods.category.id,
+                        "characteristic": goods.characteristic or '',
+                        "dateAdd": "2017-01-16 12:09:31",
+                        "dateUpdate": "2017-01-16 12:09:31",
+                        "id": goods.id,
+                        "logisticsId": 0,
+                        "minPrice": goods.min_price,
+                        "name": goods.name,
+                        "numberFav": 0,
+                        "numberGoodReputation": goods.number_good_reputation,
+                        "numberOrders": goods.number_order,
+                        "originalPrice": goods.original_price,
+                        "paixu": 0,
+                        "pic": goods.display_pic,
+                        "recommendStatus": 0,
+                        "recommendStatusStr": "",
+                        "shopId": 0,
+                        "status": 0,
+                        "statusStr": u"上架",
+                        "stores": goods.stores,
+                        "userId": app.id,
+                        "views": 0,
+                        "weight": goods.weight
+                    }
+                },
+                "msg": "success"
+            }
+           
+	   return HttpResponse(data)
+    except Exception,e:
+       return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))

@@ -6,11 +6,12 @@ from django.http import HttpResponseRedirect, HttpResponse
 from models import *
 import traceback
 import json
-import time
+import time,datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from .tools import get_wechat_session_info, get_wechat_user_info
 from .error_code import error_code
 import logging
+from .address import AddressManager
 
 logger = logging.getLogger('django')
 # Create your views here.
@@ -68,19 +69,24 @@ def  login(request,sub_domain=None):
                                     json.dumps({'code': -1, 'msg': error_code[-1], 'data': session_info.get('errmsg')})
                                 )
                         open_id = session_info['openid']
-                        user =  WechatUser.objects.get(open_id=open_id)
-                        access_token = AccessToken.objects.get(open_id=open_id)
+                        user =  WechatUser.objects.filter(open_id=open_id)
+                        if not user:
+                	    return HttpResponse(json.dumps({'code': 10000, 'msg': error_code[10000]}))
+                        user = user[0]
+                        access_token = AccessToken.objects.filter(open_id=open_id)
                         session_key = session_info['session_key']
                         token = ''
                         if not access_token:
                             s = Serializer(
-                                secret_key=app.secret_key,
+                                secret_key=app.secret,
                                 salt=app.app_id,
                                 expires_in=2 * 3600)
                             timestamp = time.time()
                             token =  s.dumps({'session_key': session_key,'open_id': open_id,'iat': timestamp})
                             a = AccessToken(token=token,open_id=open_id,session_key=session_key)
                             a.save()
+                        else:
+                            token = access_token[0].token
                         return HttpResponse(json.dumps({'code': 0,'token': token}))
         except Exception,e:
              traceback.print_exc()
@@ -91,7 +97,7 @@ def  register_cplx(request, sub_domain=None):
                 if request.method == 'GET':
                         app =  AppConfig.objects.get(sub_domain="test")
                         code = request.GET.get("code","")
-                        encrypted_data = request.GET.get("encrypted_data","")
+                        encrypted_data = request.GET.get("encryptedData","")
                         iv = request.GET.get("iv","")
                         if not code:
                                 return HttpResponse(json.dumps({'code': 300, 'msg': error_code[300].format('code')}))
@@ -102,18 +108,22 @@ def  register_cplx(request, sub_domain=None):
                         if not iv:
                                 return HttpResponse(json.dumps({'code': 300, 'msg': error_code[300].format('iv')}))
 
-                        session_key, user_info = get_wechat_user_info(app_id, secret, code, encrypted_data, iv)
+                        session_key, user_info = get_wechat_user_info(app.app_id, app.secret, code, encrypted_data, iv)
                         user = WechatUser(
+                            app_id = app,
                             name=user_info['nickName'],
                             open_id=user_info['openId'],
                             gender=user_info['gender'],
                             language=user_info['language'],
-                            country=user_info['country'],
+                            #country=user_info['country'],
                             province=user_info['province'],
                             city=user_info['city'],
+                            last_login = datetime.datetime.now()
                             )
+                        user.save()
                         return HttpResponse(json.dumps({'code': 0, 'msg': 'success'}))
         except Exception,e:
+                traceback.print_exc()
                 return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
 
 def  banner_list(request,sub_domain=None, default_banner=True):
@@ -145,9 +155,10 @@ def  banner_list(request,sub_domain=None, default_banner=True):
                     })
                     return HttpResponse(data)
         except Exception,e:
+                traceback.print_exc()
                 return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
 
-def all_category(requests,sub_domain=None):
+def all_category(request,sub_domain=None):
     try:
 	if request.method == "GET":
            app =  AppConfig.objects.get(sub_domain="test")
@@ -167,7 +178,7 @@ def all_category(requests,sub_domain=None):
                                 "name": each_category.name,
                                 "paixu": 0,
                                 "pid": 0,
-                                "type": each_category.category_type,
+                                "type": each_category.c_type,
                                 "userId": app.id
                             } for each_category in all_category
                         ],
@@ -175,6 +186,7 @@ def all_category(requests,sub_domain=None):
                     })
 	   return HttpResponse(data)
     except Exception,e:
+       traceback.print_exc()
        return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
 
            
@@ -186,7 +198,7 @@ def goods_list(request,sub_domain=None):
            app =  AppConfig.objects.get(sub_domain="test")
            category_id = request.GET.get("categoryId",None)
            if category_id:
-               category = Category.object.get(id=category_id)
+               category = Category.objects.get(id=category_id)
                goods = Goods.objects.filter(app_id=app,category=category)
            else:
                goods = Goods.objects.filter(app_id=app)
@@ -217,13 +229,14 @@ def goods_list(request,sub_domain=None):
                             "userId": app.id,
                             "views": 0,
                             "weight": 0
-                        } for each_goods in goods_list
+                        } for each_goods in goods
                     ],
                     "msg": "success"
                 })           
            
 	   return HttpResponse(data)
     except Exception,e:
+       traceback.print_exc()
        return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
 
 def goods_detail(request,sub_domain=None):
@@ -252,8 +265,8 @@ def goods_detail(request,sub_domain=None):
                         {
                             "goodsId": goods.id,
                             "id": each_pic.id,
-                            "pic": each_pic.pic
-                        } for each_pic in goods.pic
+                            "pic": app.host+"/media/"+str(each_pic.pic)
+                        } for each_pic in goods.pics.all()
                     ],
                     "logistics": {
                         "logisticsBySelf": 0,
@@ -293,6 +306,34 @@ def goods_detail(request,sub_domain=None):
                 "msg": "success"
             }
            
-	   return HttpResponse(data)
+	   return HttpResponse(json.dumps(data))
     except Exception,e:
+       traceback.print_exc()
        return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
+
+
+def address_list(request,sub_domain="test"):
+    return AddressManager(request,sub_domain).address_list()
+def address_add(request,sub_domain="test"):
+    return AddressManager(request,sub_domain).address_add()
+def address_update(request,sub_domain="test"):
+    return AddressManager(request,sub_domain).address_update()
+def address_detail(request,sub_domain="test"):
+    return AddressManager(request,sub_domain).address_detail()
+def address_delete(request,sub_domain="test"):
+    return AddressManager(request,sub_domain).address_delete()
+def address_default(request,sub_domain="test"):
+    return AddressManager(request,sub_domain).address_default()
+
+
+def order_list(request,sub_domain="test"):
+    return AddressManager(request,sub_domain).address_list()
+def order_create(request,sub_domain="test"):
+    return AddressManager(request,sub_domain).address_add()
+def order_detail(request,sub_domain="test"):
+    return AddressManager(request,sub_domain).address_update()
+def order_close(request,sub_domain="test"):
+    return AddressManager(request,sub_domain).address_detail()
+
+
+    

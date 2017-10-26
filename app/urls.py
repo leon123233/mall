@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^banner/list$', views.banner_list),
     url(r'^shop/goods/category/all$', views.all_category),
     url(r'^shop/goods/list$', views.goods_list),
+    url(r'^shop/goods/detail$', views.goods_detail),
 
     url(r'^user/shipping-address/list$', views.address_list),
     url(r'^user/shipping-address/add$', views.address_add),
@@ -19,4 +20,10 @@ urlpatterns = [
     url(r'^user/shipping-address/delete$', views.address_delete),
     url(r'^user/shipping-address/default$', views.address_default),
     url(r'^user/shipping-address/detail$', views.address_detail),
+
+    url(r'^order/statistics$', views.order_statistics),
+    url(r'^order/list$', views.order_list),
+    url(r'^order/close$', views.order_close),
+    url(r'^order/detail$', views.order_detail),
+    url(r'^order/create$', views.order_create),
 ]

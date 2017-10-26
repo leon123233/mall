@@ -9,6 +9,7 @@ import time,datetime
 from .tools import get_wechat_session_info, get_wechat_user_info
 from .error_code import error_code
 import logging
+logger = logging.getLogger('django')
 
 def try_catch(func):
     def _wrap(*args):
@@ -18,11 +19,11 @@ def try_catch(func):
         except Exception,e:
             traceback.print_exc()
             return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message})) 
-    
+    return _wrap 
 
-class AddressManager(object):
+class AddressManager():
     
-    def AddressManager(self,request,sub_domain):
+    def __init__(self,request,sub_domain):
         self.app = AppConfig.objects.get(sub_domain=sub_domain)
         self.request = request
         token = request.GET.get("token")
@@ -59,31 +60,32 @@ class AddressManager(object):
         
     @try_catch
     def address_add(self):
-        data=json.loads(self.request.raw_post_data)
-        addr = Address(user=self.user,address=data["address"],is_default=data["isDefault"],
+        data = self.request.GET
+        is_default = True if data["isDefault"] == 'true' else False
+        addr = Address(user=self.user,address=data["address"],is_default=is_default,
                  link_man = data["linkMan"],phone=data["mobile"],date_update=datetime.datetime.now(),
                  city_id = data["cityId"],province_id=data["provinceId"])
         addr.save()       
-        return HttpResponse({'code': 0, 'msg': 'success'})
+        return HttpResponse(json.dumps({'code': 0, 'msg': 'success'}))
     
     @try_catch
     def address_update(self):
-        data=json.loads(self.request.raw_post_data)
+        data=self.request.GET
         addr = Address.objects.get(id=data["id"])
         addr.address = data["address"]
-        addr.is_default = data["isDefault"]
+        addr.is_default = True if data["isDefault"] == "true" else False
         addr.link_man = data["linkMan"]
         addr.phone = data["mobile"]
         addr.city_id = data["cityId"]
         addr.province_id = data["provinceId"]
         addr.save()
-        return HttpResponse({'code': 0, 'msg': 'success'})
+        return HttpResponse(json.dumps({'code': 0, 'msg': 'success'}))
 
     @try_catch
     def address_delete(self):
         addr = Address.objects.get(id=self.request.GET.get("id"))
         addr.delete()
-        return HttpResponse({'code': 0, 'msg': 'success'})
+        return HttpResponse(json.dumps({'code': 0, 'msg': 'success'}))
     @try_catch
     def address_default(self):
         addr = Address.objects.get(is_default=True,user=self.user)

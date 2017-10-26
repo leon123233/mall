@@ -12,8 +12,10 @@ from .tools import get_wechat_session_info, get_wechat_user_info
 from .error_code import error_code
 import logging
 from .address import AddressManager
+from .order import OrderManager
 
 logger = logging.getLogger('django')
+
 # Create your views here.
 def  get_config_value(request,subdomain=None):
         try:
@@ -87,7 +89,7 @@ def  login(request,sub_domain=None):
                             a.save()
                         else:
                             token = access_token[0].token
-                        return HttpResponse(json.dumps({'code': 0,'token': token}))
+                        return HttpResponse(json.dumps({'code': 0,'data': {"token":token,"uid":user.id},'msg':"ok"}))
         except Exception,e:
              traceback.print_exc()
              return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
@@ -313,7 +315,8 @@ def goods_detail(request,sub_domain=None):
 
 
 def address_list(request,sub_domain="test"):
-    return AddressManager(request,sub_domain).address_list()
+    a = AddressManager(request,sub_domain)
+    return a.address_list()
 def address_add(request,sub_domain="test"):
     return AddressManager(request,sub_domain).address_add()
 def address_update(request,sub_domain="test"):
@@ -327,13 +330,14 @@ def address_default(request,sub_domain="test"):
 
 
 def order_list(request,sub_domain="test"):
-    return AddressManager(request,sub_domain).address_list()
+    return OrderManager(request,sub_domain).order_list()
 def order_create(request,sub_domain="test"):
-    return AddressManager(request,sub_domain).address_add()
+    return OrderManager(request,sub_domain).order_create()
 def order_detail(request,sub_domain="test"):
-    return AddressManager(request,sub_domain).address_update()
+    return OrderManager(request,sub_domain).order_detail()
 def order_close(request,sub_domain="test"):
-    return AddressManager(request,sub_domain).address_detail()
-
+    return OrderManager(request,sub_domain).order_close()
+def order_statistics(request,sub_domain="test"):
+    return OrderManager(request,sub_domain).order_statistics()
 
     

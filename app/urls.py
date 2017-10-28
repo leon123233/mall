@@ -26,4 +26,7 @@ urlpatterns = [
     url(r'^order/close$', views.order_close),
     url(r'^order/detail$', views.order_detail),
     url(r'^order/create$', views.order_create),
+
+    url(r'^pay/wxapp/get-pay-data$', views.wxapp_pay),
+    url(r'^pay/notify$', views.pay_notify),
 ]

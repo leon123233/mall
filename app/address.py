@@ -62,10 +62,16 @@ class AddressManager():
     def address_add(self):
         data = self.request.GET
         is_default = True if data["isDefault"] == 'true' else False
+        other_addr = Address.objects.filter(user=self.user)
         addr = Address(user=self.user,address=data["address"],is_default=is_default,
                  link_man = data["linkMan"],phone=data["mobile"],date_update=datetime.datetime.now(),
                  city_id = data["cityId"],province_id=data["provinceId"])
-        addr.save()       
+        addr.save()
+        for o in other_addr:
+            o.is_default = False
+            o.save()
+        addr.is_default = True
+        addr.save()
         return HttpResponse(json.dumps({'code': 0, 'msg': 'success'}))
     
     @try_catch
@@ -96,7 +102,7 @@ class AddressManager():
                         "address": addr.address,
                         "areaStr": addr.area or '',
                         "cityId": addr.city_id,
-                        "cityStr": each_address.city,
+                        "cityStr": addr.city,
                         "code": "",
                         "dateAdd": addr.date_update.strftime('%Y-%m-%d %H:%M:%S'),
                         "dateUpdate": addr.date_update.strftime('%Y-%m-%d %H:%M:%S'),

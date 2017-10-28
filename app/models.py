@@ -11,7 +11,7 @@ class AppConfig(models.Model):
         app_id =  models.CharField(max_length=255)
         secret =  models.CharField(max_length=255)
         webchat_pay_id =  models.CharField(max_length=255)
-
+        wechat_pay_secret = models.CharField(max_length=255)
 class AccessToken(models.Model):
         session_key =  models.CharField(max_length=255)
         open_id =  models.CharField(max_length=255)
@@ -66,7 +66,7 @@ class Picture(models.Model):
 class Address(models.Model):
         user = models.ForeignKey(WechatUser, related_name="addr",on_delete=models.CASCADE)
         phone = models.CharField(max_length=255)
-        address = models.CharField(max_length=255)
+        address = models.CharField(max_length=1024)
         link_man = models.CharField(max_length=255)
         status = models.CharField(max_length=255)
         date_update = models.DateField()
@@ -91,14 +91,19 @@ class Order(models.Model):
         user = models.ForeignKey(WechatUser, on_delete=models.CASCADE)
         order_num = models.CharField(max_length=255)
         goods = models.ManyToManyField(Goods)
-        address = models.ForeignKey(Address,related_name="orders")
+        address = models.CharField(max_length=1024)
         number_goods = models.IntegerField()
         goods_price = models.FloatField()
         logistics_price = models.FloatField()
         total = models.FloatField()
         status = models.IntegerField()
         tracking_number = models.CharField(max_length=255)
-        date = models.DateField()
+        date = models.DateTimeField()
+        remark = models.CharField(max_length=1024)
+        link_man = models.CharField(max_length=255)
+        province_id = models.IntegerField()
+        city_id = models.IntegerField()
+        phone = models.CharField(max_length=255)
         #payments
  
 class OrderGoods(models.Model):
@@ -110,10 +115,11 @@ class Payment(models.Model):
         #dan wei   fen
         order = models.ForeignKey(Order, related_name="pays",on_delete=models.CASCADE)
         #payment_number = models.AutoField()
-        user_id = models.CharField(max_length=255)
+        user = models.ForeignKey(WechatUser)
         status = models.CharField(max_length=255)
-
+        remark = models.CharField(max_length=255)
         openid = models.CharField(max_length=255)
+        price = models.FloatField()
         result_code = models.CharField(max_length=255)
         err_code = models.CharField(max_length=255)
         err_code_des = models.CharField(max_length=255)

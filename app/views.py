@@ -13,8 +13,30 @@ from .error_code import error_code
 import logging
 from .address import AddressManager
 from .order import OrderManager
+from weixin.pay import WeixinPay
+from weixin.helper import md5_constructor as md5
+import xmltodict
 
 logger = logging.getLogger('django')
+
+def build_pay_sign(app_id, nonce_str, prepay_id, time_stamp, key, signType='MD5'):
+    """
+    :param app_id:
+    :param nonce_str:
+    :param prepay_id:
+    :param time_stamp:
+    :param key:
+    :param signType:
+    :return:
+    """
+    sign = 'appId={app_id}' \
+           '&nonceStr={nonce_str}' \
+           '&package=prepay_id={prepay_id}' \
+           '&signType={signType}' \
+           '&timeStamp={time_stamp}' \
+           '&key={key}'.format(app_id=app_id, nonce_str=nonce_str, prepay_id=prepay_id,
+                               time_stamp=time_stamp, key=key, signType=signType)
+    return md5(sign).hexdigest().upper()
 
 # Create your views here.
 def  get_config_value(request,subdomain=None):
@@ -340,4 +362,97 @@ def order_close(request,sub_domain="test"):
 def order_statistics(request,sub_domain="test"):
     return OrderManager(request,sub_domain).order_statistics()
 
-    
+def wxapp_pay(request,sub_domain="test"):
+    try:
+        app =  AppConfig.objects.get(sub_domain="test")
+        if not app:
+            return HttpResponse(json.dumps({'code': 404, 'msg': error_code[404]}))
+        wechat_pay_id = app.wechat_pay_id
+        wechat_pay_secret = app.wechat_pay_secret
+        if not wechat_pay_id or not wechat_pay_secret:
+            return HttpResponse(json.dumps({'code': 404, 'msg': '未设置wechat_pay_id和wechat_pay_secret'}))
+        data = request.POST
+        token = data["token"]
+        money = data["money"]
+        remark = data["remark"]
+        order_id = data["nextAction"]["id"]
+        order = Order.objects.get(id=order_id) 
+        access_token = AccessToken.objects.get(token=token)
+        user = WechatUser.objects.get(app_id=app,open_id=access_token.open_id)
+        payment = Payment(order=order,user=user,price=money,remark=remark)
+        payment.save()
+        wxpay = WeixinPay(appid=app.app_id, mch_id=wechat_pay_id, partner_key=wechat_pay_secret)
+        unified_order = wxpay.unifiedorder(
+                body=u'{mall_name}'.format(mall_name=app.name),
+                total_fee=int(float(money) * 100),
+                notify_url=u'{host}/{sub_domain}/pay/notify'.format(host=app.host, sub_domain="app"),
+                openid=u'{}'.format(user.open_id),
+                out_trade_no=u'{}'.format(order.order_num)
+            )
+        if unified_order['return_code'] == 'SUCCESS' and not unified_order['result_code'] == 'FAIL':
+            time_stamp = str(int(time.time()))
+            data = json.dumps({
+                        "code": 0,
+                        "data": {
+                            'timeStamp': str(int(time.time())),
+                            'nonceStr': unified_order['nonce_str'],
+                            'prepayId': unified_order['prepay_id'],
+                            'sign': build_pay_sign(app_id, unified_order['nonce_str'], unified_order['prepay_id'],
+                                                   time_stamp, wechat_pay_secret)
+                        },
+                        "msg": "success"
+                    })
+            return HttpResponse(data)
+        else:
+            if unified_order['err_code'] == 'ORDERPAID':
+                payment.status = "pending"
+                payment.save()
+            return HttpResponse(json.dumps({'code': -1, 'msg': unified_order.get('err_code_des', unified_order['return_msg'])}))
+
+    except Exception,e:
+        traceback.print_exc()
+        return HttpResponse(json.dumps({'code': -1, 'msg': error_code[-1], 'data': e.message}))
+
+def pay_notify(request,sub_domain="test"):
+        try:
+            app = AppConfig.objects.get(sub_domain="test")
+            if not app:
+                data=xmltodict.unparse({
+                        'xml': {
+                            u'return_code': 'FAIL',
+                            u'return_msg': '参数格式校验错误'
+                        }
+                    })
+                return HttpResponse(data)
+
+            xml_data = request.body
+
+            data = xmltodict.parse(xml_data)['xml']
+            logger.info(data)
+            if data['return_code'] == 'SUCCESS':
+                data.update({'status': "success"})
+                order = Order.objects.get(order_num=data['out_trade_no'])
+                #order.payment_ids.write(data)
+                order.status = 1
+            else:
+                data.update({'status': "failed"})
+                order = Order.objects.get(order_num=data['out_trade_no'])
+
+            data=xmltodict.unparse({
+                    'xml': {
+                        'return_code': u'SUCCESS',
+                        'return_msg': u'SUCCESS'
+                    }
+                })
+            return HttpResponse(data)
+
+        except Exception , e:
+            traceback.print_exc()
+
+            data=xmltodict.unparse({
+                    'xml': {
+                        'return_code': u'FAIL',
+                        'return_msg': u'服务器内部错误'
+                    }
+                })
+            return HttpResponse(data)

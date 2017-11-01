@@ -77,6 +77,7 @@ class AddressManager():
     @try_catch
     def address_update(self):
         data=self.request.GET
+        logger.info(data)
         addr = Address.objects.get(id=data["id"])
         addr.address = data["address"]
         addr.is_default = True if data["isDefault"] == "true" else False

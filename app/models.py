@@ -12,6 +12,8 @@ class AppConfig(models.Model):
         secret =  models.CharField(max_length=255)
         webchat_pay_id =  models.CharField(max_length=255)
         wechat_pay_secret = models.CharField(max_length=255)
+        def __unicode__(self):  
+            return self.sub_domain
 class AccessToken(models.Model):
         session_key =  models.CharField(max_length=255)
         open_id =  models.CharField(max_length=255)
@@ -32,13 +34,17 @@ class WechatUser(models.Model):
         union_id =  models.CharField(max_length=255)
         ip =  models.CharField(max_length=255)
         status =  models.CharField(max_length=255,default='default')
+        def __unicode__(self):     
+            return self.name + ":" + self.open_id
                
 class Category(models.Model):
         sub_domain = models.CharField(max_length=255,help_text="子域名")
-	key = models.CharField(max_length=255)
-        name =  models.CharField(max_length=255)
+	key = models.CharField(max_length=255,help_text="key")
+        name =  models.CharField(max_length=255,help_text="商品类别")
         c_type = models.CharField(max_length=255)
         icon = models.CharField(max_length=255)
+        def __unicode__(self):     
+            return self.name+" "+self.key
 
 class Goods(models.Model):
         name =  models.CharField(max_length=255)
@@ -46,7 +52,7 @@ class Goods(models.Model):
         #webchat_pay_id =  models.CharField(max_length=255)
         app_id =  models.ForeignKey(AppConfig, on_delete=models.CASCADE)
         category =  models.ForeignKey(Category)
-        display_pic =  models.CharField(max_length=255)
+        display_pic =  models.ImageField(upload_to='img')
         #pic = models.ManyToManyField(Picture)
         content =  models.CharField(max_length=255)
         number_order = models.IntegerField()
@@ -56,12 +62,16 @@ class Goods(models.Model):
         number_good_reputation =  models.IntegerField(default=0)
         weight =  models.FloatField()
         stores = models.IntegerField()
+        def __unicode__(self):     
+            return self.name
 
 
 class Picture(models.Model):
         name =  models.CharField(max_length=255)
         pic = models.ImageField(upload_to='img')
         goods = models.ForeignKey(Goods, related_name="pics",on_delete=models.CASCADE)
+        def __unicode__(self):     
+            return str(self.pic)
 
 class Address(models.Model):
         user = models.ForeignKey(WechatUser, related_name="addr",on_delete=models.CASCADE)
@@ -80,11 +90,13 @@ class Address(models.Model):
 class Banner(models.Model):
         sub_domain =  models.CharField(max_length=255)
         title = models.CharField(max_length=255)
-        display_pic = models.CharField(max_length=255)
+        display_pic = models.ImageField(upload_to='img')
         link_url = models.CharField(max_length=255)
         goods = models.ForeignKey(Goods)
         remark = models.CharField(max_length=255)
         status = models.CharField(max_length=255)
+        def __unicode__(self):     
+            return self.title
 
 
 class Order(models.Model):
@@ -104,6 +116,8 @@ class Order(models.Model):
         province_id = models.IntegerField()
         city_id = models.IntegerField()
         phone = models.CharField(max_length=255)
+        def __unicode__(self):     
+            return self.order_num
         #payments
  
 class OrderGoods(models.Model):

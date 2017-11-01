@@ -3,3 +3,4 @@ pycrypto
 django
 mysql-python
 Pillow
+xmltodict

@@ -25,7 +25,7 @@ SECRET_KEY = '^3ic02c(3j8kv*%!grasvia6o=i=o)@q=mpns%+vq=6d$dkp@l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wechatmall.bestaliceroom.xyz']
+ALLOWED_HOSTS = ['wechatmall.bestaliceroom.xyz','39.108.245.59']
 
 
 # Application definition

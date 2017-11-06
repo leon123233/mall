@@ -371,19 +371,22 @@ def wxapp_pay(request,sub_domain="test"):
         wechat_pay_secret = app.wechat_pay_secret
         if not wechat_pay_id or not wechat_pay_secret:
             return HttpResponse(json.dumps({'code': 404, 'msg': '未设置wechat_pay_id和wechat_pay_secret'}))
-        data = request.POST
+        data = request.GET
         token = data["token"]
         money = data["money"]
         remark = data["remark"]
-        order_id = data["nextAction"]["id"]
+        text = json.loads(data["nextAction"])
+        order_id= text["id"]
         order = Order.objects.get(id=order_id) 
         access_token = AccessToken.objects.get(token=token)
+        logger.info(access_token.open_id)
         user = WechatUser.objects.get(app_id=app,open_id=access_token.open_id)
-        payment = Payment(order=order,user=user,price=money,remark=remark)
+        price_in_fen = int(float(money) * 100)
+        payment = Payment(order=order,user=user,price=money,remark=remark,total_fee=price_in_fen,cash_fee=price_in_fen,settlement_total_fee=0,coupon_fee=0,coupon_count=0,create_time=int(time.time()))
         payment.save()
         wxpay = WeixinPay(appid=app.app_id, mch_id=wechat_pay_id, partner_key=wechat_pay_secret)
         unified_order = wxpay.unifiedorder(
-                body=u'{mall_name}'.format(mall_name=app.name),
+                body=u'{mall_name}'.format(mall_name=app.mall_name),
                 total_fee=int(float(money) * 100),
                 notify_url=u'{host}/{sub_domain}/pay/notify'.format(host=app.host, sub_domain="app"),
                 openid=u'{}'.format(user.open_id),
@@ -397,7 +400,7 @@ def wxapp_pay(request,sub_domain="test"):
                             'timeStamp': str(int(time.time())),
                             'nonceStr': unified_order['nonce_str'],
                             'prepayId': unified_order['prepay_id'],
-                            'sign': build_pay_sign(app_id, unified_order['nonce_str'], unified_order['prepay_id'],
+                            'sign': build_pay_sign(app.app_id, unified_order['nonce_str'], unified_order['prepay_id'],
                                                    time_stamp, wechat_pay_secret)
                         },
                         "msg": "success"
@@ -432,11 +435,22 @@ def pay_notify(request,sub_domain="test"):
             if data['return_code'] == 'SUCCESS':
                 data.update({'status': "success"})
                 order = Order.objects.get(order_num=data['out_trade_no'])
-                #order.payment_ids.write(data)
                 order.status = 1
+                order.save()
+                last_pay = order.pays.all().order_by("-create_time")[0]
+                last_pay.result_code= data['result_code']
+                last_pay.transaction_id = data["transaction_id"]
+                last_pay.openid =  data["openid"]
+                last_pay.save()
+                
             else:
                 data.update({'status': "failed"})
                 order = Order.objects.get(order_num=data['out_trade_no'])
+                last_pay = order.pays.all().order_by("-create_time")[0]
+                last_pay.result_code= data['result_code']
+                last_pay.transaction_id = data["transaction_id"]
+                last_pay.openid =  data["openid"]
+                last_pay.save()
 
             data=xmltodict.unparse({
                     'xml': {

@@ -10,10 +10,19 @@ class AppConfig(models.Model):
         mall_name =  models.CharField(max_length=255)
         app_id =  models.CharField(max_length=255)
         secret =  models.CharField(max_length=255)
-        webchat_pay_id =  models.CharField(max_length=255)
+        wechat_pay_id =  models.CharField(max_length=255)
         wechat_pay_secret = models.CharField(max_length=255)
+
         def __unicode__(self):  
             return self.sub_domain
+
+class Discount(models.Model):
+        app = models.ForeignKey(AppConfig, on_delete=models.CASCADE)
+        name = models.CharField(max_length=255)
+        man = models.IntegerField()
+        jian = models.IntegerField()
+        status = models.IntegerField()
+
 class AccessToken(models.Model):
         session_key =  models.CharField(max_length=255)
         open_id =  models.CharField(max_length=255)
@@ -112,7 +121,7 @@ class Order(models.Model):
         tracking_number = models.CharField(max_length=255)
         date = models.DateTimeField()
         remark = models.CharField(max_length=1024)
-        link_man = models.CharField(max_length=255)
+        link_man = models.CharField('联系人',max_length=255)
         province_id = models.IntegerField()
         city_id = models.IntegerField()
         phone = models.CharField(max_length=255)
@@ -146,6 +155,7 @@ class Payment(models.Model):
         cash_fee_type = models.CharField(max_length=255)
         coupon_fee = models.IntegerField()
         coupon_count = models.IntegerField()
+        create_time = models.IntegerField()
 
 
 

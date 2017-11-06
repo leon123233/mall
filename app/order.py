@@ -58,7 +58,7 @@ class OrderManager(object):
                         "goodsMap": {
                             each_order.id: [
                                 {
-                                    "pic": each_goods.display_pic,
+                                    "pic": self.app.host+"/media/"+str(each_goods.display_pic),
                                 } for each_goods in each_order.goods.all()]
                             for each_order in orders}
                     },
@@ -95,6 +95,13 @@ class OrderManager(object):
         link_man = data.get("linkMan")
 
         goods_price = self._handle_goods_json(goods_json)
+        
+        try:
+            discount = Discount.objects.get(app=self.app,status=1)
+            if goods_price >= discount.man:
+                goods_price = goods_price - discount.jian                
+        except:
+            pass
 
         order_dict = {
                 'user': self.user,

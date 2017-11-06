@@ -1,0 +1,313 @@
+[2017-11-02 16:34:15,981] [WARNING] Not Found: /
+[2017-11-02 16:34:15,982] [WARNING] "GET / HTTP/1.0" 404 2165
+[2017-11-02 16:34:16,156] [WARNING] Not Found: /favicon.ico
+[2017-11-02 16:34:16,157] [WARNING] "GET /favicon.ico HTTP/1.0" 404 2216
+[2017-11-02 16:34:22,202] [WARNING] Not Found: /
+[2017-11-02 16:34:22,203] [WARNING] "GET / HTTP/1.0" 404 2166
+[2017-11-02 16:34:22,339] [WARNING] Not Found: /favicon.ico
+[2017-11-02 16:34:22,339] [WARNING] "GET /favicon.ico HTTP/1.0" 404 2217
+[2017-11-02 16:34:25,599] [INFO] "GET /admin/ HTTP/1.0" 200 9660
+[2017-11-02 16:34:25,704] [INFO] "GET /static/admin/img/icon-deletelink.svg HTTP/1.0" 200 392
+[2017-11-02 16:35:36,133] [INFO] "GET /admin/ HTTP/1.0" 200 10059
+[2017-11-02 16:35:38,933] [INFO] "GET /admin/app/discount/ HTTP/1.0" 200 3061
+[2017-11-02 16:35:39,015] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 16:35:40,930] [INFO] "GET /admin/app/discount/add/ HTTP/1.0" 200 6376
+[2017-11-02 16:35:41,024] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 16:36:19,834] [INFO] "POST /admin/app/discount/add/ HTTP/1.0" 302 0
+[2017-11-02 16:36:19,918] [INFO] "GET /admin/app/discount/ HTTP/1.0" 200 4394
+[2017-11-02 16:36:20,008] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 16:36:25,882] [INFO] "GET /admin/app/discount/1/change/ HTTP/1.0" 200 6655
+[2017-11-02 16:36:25,969] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 16:36:27,735] [INFO] "GET /admin/app/discount/ HTTP/1.0" 200 4204
+[2017-11-02 16:36:29,482] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-02 16:36:30,510] [INFO] "GET /admin/app/address/ HTTP/1.0" 200 6242
+[2017-11-02 16:36:30,615] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 16:36:32,195] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-02 16:36:33,401] [INFO] "GET /admin/app/appconfig/ HTTP/1.0" 200 5027
+[2017-11-02 16:36:33,486] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 16:36:39,895] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-02 16:36:41,232] [INFO] "GET /admin/app/order/ HTTP/1.0" 200 6444
+[2017-11-02 16:36:41,316] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 16:36:42,904] [INFO] "GET /admin/app/order/11/change/ HTTP/1.0" 200 13189
+[2017-11-02 16:36:43,004] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 16:36:50,744] [INFO] "GET /admin/app/order/ HTTP/1.0" 200 6444
+[2017-11-02 16:37:30,107] [INFO] "GET /admin/app/order/11/change/ HTTP/1.0" 200 13189
+[2017-11-02 16:37:30,229] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+Performing system checks...
+
+System check identified no issues (0 silenced).
+November 02, 2017 - 16:35:11
+Django version 1.11.6, using settings 'wechat_mall.settings'
+Starting development server at http://127.0.0.1:8080/
+Quit the server with CONTROL-C.
+[2017-11-02 16:40:23,253] [INFO] "GET /admin/app/order/ HTTP/1.0" 200 9421
+[2017-11-02 16:40:23,422] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+Performing system checks...
+
+System check identified no issues (0 silenced).
+November 02, 2017 - 16:40:18
+Django version 1.11.6, using settings 'wechat_mall.settings'
+Starting development server at http://127.0.0.1:8080/
+Quit the server with CONTROL-C.
+[2017-11-02 16:48:26,859] [INFO] "GET /admin/app/order/ HTTP/1.0" 200 9422
+[2017-11-02 16:48:26,953] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 17:30:41,084] [WARNING] Not Found: /
+[2017-11-02 17:30:41,084] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-02 17:56:05,985] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-02 17:56:06,072] [INFO] "GET /static/admin/css/base.css HTTP/1.0" 304 0
+[2017-11-02 17:56:06,121] [INFO] "GET /static/admin/css/dashboard.css HTTP/1.0" 304 0
+[2017-11-02 17:56:06,160] [INFO] "GET /static/admin/css/fonts.css HTTP/1.0" 304 0
+[2017-11-02 17:56:06,217] [INFO] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.0" 304 0
+[2017-11-02 17:56:06,218] [INFO] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.0" 304 0
+[2017-11-02 17:56:06,231] [INFO] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.0" 304 0
+[2017-11-02 17:56:06,262] [INFO] "GET /static/admin/img/icon-addlink.svg HTTP/1.0" 304 0
+[2017-11-02 17:56:06,266] [INFO] "GET /static/admin/img/icon-changelink.svg HTTP/1.0" 304 0
+[2017-11-02 17:56:13,605] [INFO] "GET /admin/app/accesstoken/ HTTP/1.0" 200 4715
+[2017-11-02 17:56:13,698] [INFO] "GET /static/admin/css/changelists.css HTTP/1.0" 304 0
+[2017-11-02 17:56:13,704] [INFO] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.0" 304 0
+[2017-11-02 17:56:13,706] [INFO] "GET /static/admin/js/jquery.init.js HTTP/1.0" 304 0
+[2017-11-02 17:56:13,706] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 17:56:13,707] [INFO] "GET /static/admin/js/core.js HTTP/1.0" 304 0
+[2017-11-02 17:56:13,708] [INFO] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.0" 304 0
+[2017-11-02 17:56:13,761] [INFO] "GET /static/admin/js/actions.js HTTP/1.0" 304 0
+[2017-11-02 17:56:13,762] [INFO] "GET /static/admin/js/urlify.js HTTP/1.0" 304 0
+[2017-11-02 17:56:13,763] [INFO] "GET /static/admin/js/prepopulate.js HTTP/1.0" 304 0
+[2017-11-02 17:56:13,767] [INFO] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.0" 304 0
+[2017-11-02 17:56:13,857] [INFO] "GET /static/admin/img/tooltag-add.svg HTTP/1.0" 304 0
+[2017-11-02 17:56:15,012] [INFO] "GET /admin/app/accesstoken/3/change/ HTTP/1.0" 200 5429
+[2017-11-02 17:56:15,099] [INFO] "GET /static/admin/js/change_form.js HTTP/1.0" 304 0
+[2017-11-02 17:56:15,101] [INFO] "GET /static/admin/js/prepopulate_init.js HTTP/1.0" 304 0
+[2017-11-02 17:56:15,101] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 17:56:15,102] [INFO] "GET /static/admin/css/forms.css HTTP/1.0" 304 0
+[2017-11-02 17:56:15,163] [INFO] "GET /static/admin/css/widgets.css HTTP/1.0" 304 0
+[2017-11-02 17:56:16,613] [INFO] "GET /admin/app/accesstoken/ HTTP/1.0" 200 4715
+[2017-11-02 17:56:18,996] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-02 17:56:20,623] [INFO] "GET /admin/app/banner/ HTTP/1.0" 200 4414
+[2017-11-02 17:56:20,719] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 17:56:21,838] [INFO] "GET /admin/app/banner/2/change/ HTTP/1.0" 200 7786
+[2017-11-02 17:56:21,928] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 17:56:29,389] [INFO] "GET /admin/app/banner/ HTTP/1.0" 200 4414
+[2017-11-02 17:56:31,283] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-02 17:56:37,929] [INFO] "GET /admin/app/category/ HTTP/1.0" 200 4386
+[2017-11-02 17:56:38,014] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 17:56:40,146] [INFO] "GET /admin/app/category/1/change/ HTTP/1.0" 200 6307
+[2017-11-02 17:56:40,242] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 17:56:44,876] [INFO] "GET /admin/app/category/ HTTP/1.0" 200 4386
+[2017-11-02 17:56:46,427] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-02 17:56:50,782] [INFO] "GET /admin/app/order/ HTTP/1.0" 200 9422
+[2017-11-02 17:56:50,871] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 17:56:50,875] [INFO] "GET /static/admin/img/search.svg HTTP/1.0" 304 0
+[2017-11-02 17:57:01,102] [INFO] "GET /admin/app/order/?status=-1 HTTP/1.0" 200 7510
+[2017-11-02 17:57:01,195] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 17:57:02,569] [INFO] "GET /admin/app/order/ HTTP/1.0" 200 9422
+[2017-11-02 17:57:02,662] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 17:57:03,648] [INFO] "GET /admin/app/order/?status=1 HTTP/1.0" 200 9309
+[2017-11-02 17:57:03,740] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-02 19:58:21,459] [WARNING] Not Found: /
+[2017-11-02 19:58:21,460] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-02 22:47:00,434] [WARNING] Not Found: /showcase/integration/saveGangster.action
+[2017-11-02 22:47:00,435] [WARNING] "POST /showcase/integration/saveGangster.action HTTP/1.0" 404 2290
+[2017-11-02 22:47:00,629] [WARNING] Not Found: /struts2-showcase/integration/saveGangster.action
+[2017-11-02 22:47:00,629] [WARNING] "POST /struts2-showcase/integration/saveGangster.action HTTP/1.0" 404 2314
+[2017-11-02 22:47:00,813] [WARNING] Not Found: /integration/saveGangster.action
+[2017-11-02 22:47:00,813] [WARNING] "POST /integration/saveGangster.action HTTP/1.0" 404 2263
+[2017-11-03 02:55:59,668] [WARNING] Not Found: /
+[2017-11-03 02:55:59,669] [WARNING] "GET / HTTP/1.0" 404 2166
+[2017-11-03 02:58:09,429] [WARNING] Not Found: /
+[2017-11-03 02:58:09,430] [WARNING] "GET / HTTP/1.0" 404 2165
+[2017-11-03 11:57:59,574] [WARNING] Not Found: /
+[2017-11-03 11:57:59,574] [WARNING] "GET / HTTP/1.0" 404 2165
+[2017-11-03 12:09:41,152] [WARNING] Not Found: /
+[2017-11-03 12:09:41,152] [WARNING] "HEAD / HTTP/1.0" 404 2166
+[2017-11-03 12:39:29,619] [WARNING] Not Found: /
+[2017-11-03 12:39:29,619] [WARNING] "GET / HTTP/1.0" 404 2166
+[2017-11-03 17:27:22,051] [WARNING] Not Found: /
+[2017-11-03 17:27:22,052] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-03 17:44:03,825] [WARNING] Not Found: /
+[2017-11-03 17:44:03,825] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-03 18:09:42,049] [WARNING] Not Found: /
+[2017-11-03 18:09:42,050] [WARNING] "HEAD / HTTP/1.0" 404 2166
+[2017-11-03 18:16:36,379] [WARNING] Not Found: /
+[2017-11-03 18:16:36,380] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-03 20:24:59,782] [WARNING] Not Found: /showcase/integration/saveGangster.action
+[2017-11-03 20:24:59,782] [WARNING] "POST /showcase/integration/saveGangster.action HTTP/1.0" 404 2290
+[2017-11-03 20:24:59,971] [WARNING] Not Found: /struts2-showcase/integration/saveGangster.action
+[2017-11-03 20:24:59,972] [WARNING] "POST /struts2-showcase/integration/saveGangster.action HTTP/1.0" 404 2314
+[2017-11-03 20:25:00,164] [WARNING] Not Found: /integration/saveGangster.action
+[2017-11-03 20:25:00,164] [WARNING] "POST /integration/saveGangster.action HTTP/1.0" 404 2263
+[2017-11-03 20:33:23,796] [WARNING] Not Found: /
+[2017-11-03 20:33:23,797] [WARNING] "GET / HTTP/1.0" 404 2165
+[2017-11-03 23:11:26,765] [WARNING] Not Found: /a2billing/admin/Public/index.php
+[2017-11-03 23:11:26,765] [WARNING] "GET /a2billing/admin/Public/index.php HTTP/1.0" 404 2265
+[2017-11-04 01:13:26,763] [WARNING] Not Found: /
+[2017-11-04 01:13:26,763] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-04 03:14:15,472] [WARNING] Not Found: /
+[2017-11-04 03:14:15,473] [WARNING] "GET / HTTP/1.0" 404 2165
+[2017-11-04 16:44:54,270] [WARNING] Not Found: /
+[2017-11-04 16:44:54,271] [WARNING] "GET / HTTP/1.0" 404 2166
+[2017-11-04 18:32:09,155] [WARNING] Not Found: /
+[2017-11-04 18:32:09,156] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-04 19:45:13,298] [WARNING] Not Found: /
+[2017-11-04 19:45:13,298] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-04 20:07:34,015] [WARNING] Not Found: /showcase/integration/saveGangster.action
+[2017-11-04 20:07:34,016] [WARNING] "POST /showcase/integration/saveGangster.action HTTP/1.0" 404 2290
+[2017-11-04 20:07:34,204] [WARNING] Not Found: /struts2-showcase/integration/saveGangster.action
+[2017-11-04 20:07:34,204] [WARNING] "POST /struts2-showcase/integration/saveGangster.action HTTP/1.0" 404 2314
+[2017-11-04 20:07:34,389] [WARNING] Not Found: /integration/saveGangster.action
+[2017-11-04 20:07:34,390] [WARNING] "POST /integration/saveGangster.action HTTP/1.0" 404 2263
+[2017-11-05 00:04:55,764] [WARNING] Not Found: /
+[2017-11-05 00:04:55,765] [WARNING] "GET / HTTP/1.0" 404 2166
+[2017-11-05 04:27:59,751] [WARNING] Not Found: /
+[2017-11-05 04:27:59,752] [WARNING] "GET / HTTP/1.0" 404 2165
+[2017-11-05 06:27:47,754] [WARNING] Not Found: /
+[2017-11-05 06:27:47,755] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-05 13:09:28,996] [WARNING] Not Found: /
+[2017-11-05 13:09:28,997] [WARNING] "GET / HTTP/1.0" 404 2166
+[2017-11-05 15:24:33,205] [WARNING] Not Found: /
+[2017-11-05 15:24:33,205] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-05 19:29:25,463] [WARNING] Not Found: /
+[2017-11-05 19:29:25,463] [WARNING] "GET / HTTP/1.0" 404 2151
+[2017-11-05 20:07:33,648] [WARNING] Not Found: /showcase/integration/saveGangster.action
+[2017-11-05 20:07:33,649] [WARNING] "POST /showcase/integration/saveGangster.action HTTP/1.0" 404 2290
+[2017-11-05 20:07:33,861] [WARNING] Not Found: /struts2-showcase/integration/saveGangster.action
+[2017-11-05 20:07:33,861] [WARNING] "POST /struts2-showcase/integration/saveGangster.action HTTP/1.0" 404 2314
+[2017-11-05 20:07:34,051] [WARNING] Not Found: /integration/saveGangster.action
+[2017-11-05 20:07:34,051] [WARNING] "POST /integration/saveGangster.action HTTP/1.0" 404 2263
+[2017-11-06 04:28:38,691] [WARNING] Not Found: /
+[2017-11-06 04:28:38,692] [WARNING] "GET / HTTP/1.0" 404 2166
+[2017-11-06 11:21:11,325] [WARNING] Not Found: /
+[2017-11-06 11:21:11,326] [WARNING] "GET / HTTP/1.0" 404 2165
+[2017-11-06 11:21:11,604] [WARNING] Not Found: /favicon.ico
+[2017-11-06 11:21:11,605] [WARNING] "GET /favicon.ico HTTP/1.0" 404 2216
+[2017-11-06 11:21:15,170] [INFO] "GET /admin HTTP/1.0" 301 0
+[2017-11-06 11:21:15,244] [INFO] "GET /admin/ HTTP/1.0" 200 10064
+[2017-11-06 11:21:15,311] [INFO] "GET /static/admin/css/base.css HTTP/1.0" 200 16066
+[2017-11-06 11:21:15,312] [INFO] "GET /static/admin/css/dashboard.css HTTP/1.0" 200 412
+[2017-11-06 11:21:15,402] [INFO] "GET /static/admin/css/fonts.css HTTP/1.0" 200 423
+[2017-11-06 11:21:15,460] [INFO] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.0" 200 81348
+[2017-11-06 11:21:15,464] [INFO] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.0" 200 80304
+[2017-11-06 11:21:15,465] [INFO] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.0" 200 82564
+[2017-11-06 11:21:15,467] [INFO] "GET /static/admin/img/icon-addlink.svg HTTP/1.0" 200 331
+[2017-11-06 11:21:15,527] [INFO] "GET /static/admin/img/icon-changelink.svg HTTP/1.0" 200 380
+[2017-11-06 11:21:15,528] [INFO] "GET /static/admin/img/icon-deletelink.svg HTTP/1.0" 200 392
+[2017-11-06 11:22:09,734] [INFO] "GET /admin/app/category/ HTTP/1.0" 200 4386
+[2017-11-06 11:22:09,832] [INFO] "GET /static/admin/css/changelists.css HTTP/1.0" 200 6170
+[2017-11-06 11:22:09,835] [INFO] "GET /static/admin/js/core.js HTTP/1.0" 200 7976
+[2017-11-06 11:22:09,835] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:22:09,837] [INFO] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.0" 200 258648
+[2017-11-06 11:22:09,838] [INFO] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.0" 200 6591
+[2017-11-06 11:22:09,839] [INFO] "GET /static/admin/js/jquery.init.js HTTP/1.0" 200 363
+[2017-11-06 11:22:09,920] [INFO] "GET /static/admin/js/urlify.js HTTP/1.0" 200 8186
+[2017-11-06 11:22:09,921] [INFO] "GET /static/admin/js/actions.js HTTP/1.0" 200 6501
+[2017-11-06 11:22:09,956] [INFO] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.0" 200 128820
+[2017-11-06 11:22:09,957] [INFO] "GET /static/admin/js/prepopulate.js HTTP/1.0" 200 1538
+[2017-11-06 11:22:12,297] [INFO] "GET /static/admin/img/tooltag-add.svg HTTP/1.0" 200 331
+[2017-11-06 11:22:17,818] [INFO] "GET /admin/app/category/1/change/ HTTP/1.0" 200 6307
+[2017-11-06 11:22:17,915] [INFO] "GET /static/admin/css/forms.css HTTP/1.0" 200 8173
+[2017-11-06 11:22:17,923] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:22:17,926] [INFO] "GET /static/admin/js/prepopulate_init.js HTTP/1.0" 200 495
+[2017-11-06 11:22:17,930] [INFO] "GET /static/admin/js/change_form.js HTTP/1.0" 200 712
+[2017-11-06 11:22:17,996] [INFO] "GET /static/admin/css/widgets.css HTTP/1.0" 200 10340
+[2017-11-06 11:22:33,139] [INFO] "POST /admin/app/category/1/change/ HTTP/1.0" 302 0
+[2017-11-06 11:22:33,272] [INFO] "GET /admin/app/category/ HTTP/1.0" 200 4574
+[2017-11-06 11:22:33,410] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:22:33,601] [INFO] "GET /static/admin/img/icon-yes.svg HTTP/1.0" 200 436
+[2017-11-06 11:22:36,416] [INFO] "GET /admin/app/category/1/change/ HTTP/1.0" 200 6307
+[2017-11-06 11:22:38,620] [INFO] "GET /admin/app/category/ HTTP/1.0" 200 4386
+[2017-11-06 11:22:40,215] [INFO] "GET /admin/ HTTP/1.0" 200 10110
+[2017-11-06 11:23:21,279] [INFO] "GET /admin/app/goods/ HTTP/1.0" 200 4398
+[2017-11-06 11:23:21,385] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:23:24,077] [INFO] "GET /admin/app/goods/1/change/ HTTP/1.0" 200 11000
+[2017-11-06 11:23:24,173] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:28:59,130] [INFO] "POST /admin/app/goods/1/change/ HTTP/1.0" 302 0
+[2017-11-06 11:28:59,216] [INFO] "GET /admin/app/goods/ HTTP/1.0" 200 4575
+[2017-11-06 11:28:59,306] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:29:01,040] [INFO] "GET /admin/app/goods/2/change/ HTTP/1.0" 200 10991
+[2017-11-06 11:29:01,127] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:30:03,411] [INFO] "POST /admin/app/goods/2/change/ HTTP/1.0" 302 0
+[2017-11-06 11:30:03,505] [INFO] "GET /admin/app/goods/ HTTP/1.0" 200 4575
+[2017-11-06 11:30:03,594] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:30:07,695] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-06 11:30:10,386] [INFO] "GET /admin/app/banner/ HTTP/1.0" 200 4414
+[2017-11-06 11:30:10,466] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:30:12,697] [INFO] "GET /admin/app/banner/1/change/ HTTP/1.0" 200 7804
+[2017-11-06 11:30:12,789] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:30:31,331] [INFO] "POST /admin/app/banner/1/change/ HTTP/1.0" 302 0
+[2017-11-06 11:30:31,417] [INFO] "GET /admin/app/banner/ HTTP/1.0" 200 4594
+[2017-11-06 11:30:31,503] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:30:33,286] [INFO] "GET /admin/app/banner/2/change/ HTTP/1.0" 200 7786
+[2017-11-06 11:30:33,375] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:30:51,262] [INFO] "POST /admin/app/banner/2/change/ HTTP/1.0" 302 0
+[2017-11-06 11:30:51,341] [INFO] "GET /admin/app/banner/ HTTP/1.0" 200 4594
+[2017-11-06 11:30:51,436] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:32:25,283] [INFO] "GET /app/config/get-value?key=mallName HTTP/1.0" 200 220
+[2017-11-06 11:32:25,294] [WARNING] Not Found: /app/discounts/coupons
+[2017-11-06 11:32:25,296] [WARNING] "GET /app/discounts/coupons?type= HTTP/1.0" 404 5780
+[2017-11-06 11:32:25,301] [INFO] "GET /app/banner/list?key=mallName HTTP/1.0" 200 653
+[2017-11-06 11:32:25,306] [INFO] "GET /app/shop/goods/category/all HTTP/1.0" 200 214
+[2017-11-06 11:32:25,308] [INFO] code: 081aA9fu1eAoW90xXqfu18Qffu1aA9ff
+[2017-11-06 11:32:25,308] [INFO] ::https://api.weixin.qq.com/sns/jscode2session
+[2017-11-06 11:32:25,308] [INFO] https://api.weixin.qq.com/sns/jscode2session?js_code=081aA9fu1eAoW90xXqfu18Qffu1aA9ff&secret=82c88fdfe91f6f1c9a0a5295b1a063a4&grant_type=authorization_code&appid=wx5e902c1a4b5a39c3
+[2017-11-06 11:32:25,485] [INFO] {u'openid': u'oTRgD0fbBEkk7HF0Gw-4ZyD333_0', u'session_key': u'uT6oHO3xo6yLqst/owmqVw==', u'expires_in': 7200}
+[2017-11-06 11:32:25,486] [INFO] {u'openid': u'oTRgD0fbBEkk7HF0Gw-4ZyD333_0', u'session_key': u'uT6oHO3xo6yLqst/owmqVw==', u'expires_in': 7200}
+[2017-11-06 11:32:25,489] [INFO] "GET /app/user/wxapp/login?code=081aA9fu1eAoW90xXqfu18Qffu1aA9ff HTTP/1.0" 200 311
+[2017-11-06 11:32:25,505] [INFO] "GET /app/shop/goods/list?categoryId= HTTP/1.0" 200 1080
+[2017-11-06 11:32:27,383] [INFO] "GET /media/img/banner1.jpg HTTP/1.0" 200 39044
+[2017-11-06 11:32:27,421] [INFO] "GET /media/img/goods1_tCc2LiA.jpg HTTP/1.0" 200 37306
+[2017-11-06 11:32:27,422] [INFO] "GET /media/img/goods1.jpg HTTP/1.0" 200 37306
+[2017-11-06 11:32:27,424] [INFO] "GET /media/img/banner2.jpg HTTP/1.0" 200 13575
+[2017-11-06 11:32:34,973] [INFO] "GET /app/shop/goods/list?categoryId=1 HTTP/1.0" 200 1080
+[2017-11-06 11:32:35,802] [INFO] "GET /app/shop/goods/list?categoryId= HTTP/1.0" 200 1080
+[2017-11-06 11:32:59,564] [INFO] "GET /app/user/shipping-address/list?token=eyJhbGciOiJIUzI1NiIsImV4cCI6MTUwOTA3NTgyNywiaWF0IjoxNTA5MDY4NjI3fQ.eyJpYXQiOjE1MDkwNjg2MjcuODA1MTA0LCJzZXNzaW9uX2tleSI6ImJsRFhlNnpmWkcxRzczaHRtZVpWUGc9PSIsIm9wZW5faWQiOiJvVFJnRDBmYkJFa2s3SEYwR3ctNFp5RDMzM18wIn0.HXDgDE1D5zF_XQtZIIGLlc7L1NmgK5KdDLmYCFxWlPs HTTP/1.0" 200 379
+[2017-11-06 11:34:15,007] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-06 11:34:17,222] [INFO] "GET /admin/app/goods/ HTTP/1.0" 200 4398
+[2017-11-06 11:34:17,329] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:34:25,494] [INFO] "GET /admin/app/goods/1/change/ HTTP/1.0" 200 11027
+[2017-11-06 11:34:25,597] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:34:46,925] [INFO] "POST /admin/app/goods/1/change/ HTTP/1.0" 302 0
+[2017-11-06 11:34:47,017] [INFO] "GET /admin/app/goods/ HTTP/1.0" 200 4587
+[2017-11-06 11:34:47,127] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:34:48,665] [INFO] "GET /admin/app/goods/2/change/ HTTP/1.0" 200 11044
+[2017-11-06 11:34:48,753] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:34:58,293] [INFO] "POST /admin/app/goods/2/change/ HTTP/1.0" 302 0
+[2017-11-06 11:34:58,382] [INFO] "GET /admin/app/goods/ HTTP/1.0" 200 4593
+[2017-11-06 11:34:58,471] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:35:04,493] [INFO] "GET /app/shop/goods/detail?id=1 HTTP/1.0" 200 1074
+[2017-11-06 11:35:04,781] [INFO] "GET /media/img/goods1.jpg HTTP/1.0" 304 0
+[2017-11-06 11:35:04,843] [INFO] "GET /media/img/a.jpg HTTP/1.0" 304 0
+[2017-11-06 11:35:25,078] [INFO] "GET /app/user/shipping-address/default?token=eyJhbGciOiJIUzI1NiIsImV4cCI6MTUwOTA3NTgyNywiaWF0IjoxNTA5MDY4NjI3fQ.eyJpYXQiOjE1MDkwNjg2MjcuODA1MTA0LCJzZXNzaW9uX2tleSI6ImJsRFhlNnpmWkcxRzczaHRtZVpWUGc9PSIsIm9wZW5faWQiOiJvVFJnRDBmYkJFa2s3SEYwR3ctNFp5RDMzM18wIn0.HXDgDE1D5zF_XQtZIIGLlc7L1NmgK5KdDLmYCFxWlPs HTTP/1.0" 200 377
+[2017-11-06 11:35:25,216] [WARNING] Not Found: /app/discounts/my
+[2017-11-06 11:35:25,218] [WARNING] "GET /app/discounts/my?token=eyJhbGciOiJIUzI1NiIsImV4cCI6MTUwOTA3NTgyNywiaWF0IjoxNTA5MDY4NjI3fQ.eyJpYXQiOjE1MDkwNjg2MjcuODA1MTA0LCJzZXNzaW9uX2tleSI6ImJsRFhlNnpmWkcxRzczaHRtZVpWUGc9PSIsIm9wZW5faWQiOiJvVFJnRDBmYkJFa2s3SEYwR3ctNFp5RDMzM18wIn0.HXDgDE1D5zF_XQtZIIGLlc7L1NmgK5KdDLmYCFxWlPs&status=0 HTTP/1.0" 404 6033
+[2017-11-06 11:36:41,042] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-06 11:36:43,527] [INFO] "GET /admin/app/goods/ HTTP/1.0" 200 4410
+[2017-11-06 11:36:43,614] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:36:44,877] [INFO] "GET /admin/app/goods/2/change/ HTTP/1.0" 200 11056
+[2017-11-06 11:36:44,963] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:36:53,916] [INFO] "GET /admin/app/goods/ HTTP/1.0" 200 4410
+[2017-11-06 11:36:55,351] [INFO] "GET /admin/app/goods/1/change/ HTTP/1.0" 200 11039
+[2017-11-06 11:36:55,439] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:36:58,844] [INFO] "GET /admin/app/goods/1/change/ HTTP/1.0" 200 11039
+[2017-11-06 11:36:58,950] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:40:14,110] [INFO] "GET /admin/app/ HTTP/1.0" 200 6174
+[2017-11-06 11:40:16,196] [INFO] "GET /admin/app/discount/ HTTP/1.0" 200 4204
+[2017-11-06 11:40:16,288] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:40:18,030] [INFO] "GET /admin/app/discount/1/change/ HTTP/1.0" 200 6655
+[2017-11-06 11:40:18,130] [INFO] "GET /admin/jsi18n/ HTTP/1.0" 200 3217
+[2017-11-06 11:40:25,699] [INFO] "GET /admin/app/discount/ HTTP/1.0" 200 4204
+[2017-11-06 11:40:41,681] [INFO] "GET /app/shop/goods/detail?id=1 HTTP/1.0" 200 1074
+[2017-11-06 11:40:42,316] [INFO] "GET /media/img/goods1.jpg HTTP/1.0" 304 0
+[2017-11-06 11:43:11,469] [INFO] "GET /app/shop/goods/detail?id=1 HTTP/1.0" 200 1074
+[2017-11-06 11:43:11,731] [INFO] "GET /media/img/goods1.jpg HTTP/1.0" 304 0
+[2017-11-06 11:45:59,826] [INFO] "GET /app/user/shipping-address/list?token=eyJhbGciOiJIUzI1NiIsImV4cCI6MTUwOTA3NTgyNywiaWF0IjoxNTA5MDY4NjI3fQ.eyJpYXQiOjE1MDkwNjg2MjcuODA1MTA0LCJzZXNzaW9uX2tleSI6ImJsRFhlNnpmWkcxRzczaHRtZVpWUGc9PSIsIm9wZW5faWQiOiJvVFJnRDBmYkJFa2s3SEYwR3ctNFp5RDMzM18wIn0.HXDgDE1D5zF_XQtZIIGLlc7L1NmgK5KdDLmYCFxWlPs HTTP/1.0" 200 379
+[2017-11-06 11:46:01,115] [INFO] <QueryDict: {u'token': [u'eyJhbGciOiJIUzI1NiIsImV4cCI6MTUwOTA3NTgyNywiaWF0IjoxNTA5MDY4NjI3fQ.eyJpYXQiOjE1MDkwNjg2MjcuODA1MTA0LCJzZXNzaW9uX2tleSI6ImJsRFhlNnpmWkcxRzczaHRtZVpWUGc9PSIsIm9wZW5faWQiOiJvVFJnRDBmYkJFa2s3SEYwR3ctNFp5RDMzM18wIn0.HXDgDE1D5zF_XQtZIIGLlc7L1NmgK5KdDLmYCFxWlPs'], u'id': [u'10'], u'isDefault': [u'true']}>
+Traceback (most recent call last):
+  File "/home/leon/mall/app/address.py", line 17, in _wrap
+    r = func(*args)
+  File "/home/leon/mall/app/address.py", line 82, in address_update
+    addr.address = data["address"]
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'address'"
+[2017-11-06 11:46:01,117] [INFO] "GET /app/user/shipping-address/update?token=eyJhbGciOiJIUzI1NiIsImV4cCI6MTUwOTA3NTgyNywiaWF0IjoxNTA5MDY4NjI3fQ.eyJpYXQiOjE1MDkwNjg2MjcuODA1MTA0LCJzZXNzaW9uX2tleSI6ImJsRFhlNnpmWkcxRzczaHRtZVpWUGc9PSIsIm9wZW5faWQiOiJvVFJnRDBmYkJFa2s3SEYwR3ctNFp5RDMzM18wIn0.HXDgDE1D5zF_XQtZIIGLlc7L1NmgK5KdDLmYCFxWlPs&id=10&isDefault=true HTTP/1.0" 200 87
+[2017-11-06 11:53:51,014] [WARNING] Not Found: /
+[2017-11-06 11:53:51,014] [WARNING] "GET / HTTP/1.0" 404 2151

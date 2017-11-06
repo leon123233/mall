@@ -22,6 +22,7 @@ class PictureAdmin(admin.ModelAdmin):
     list_display = ('name','pic')
 
 class OrderAdmin(admin.ModelAdmin):
+    list_display = ('user','link_man','order_num','address','total','status','date','phone','remark')
     search_fields = ('status','date')
     list_filter = ('status','date')
 
@@ -36,6 +37,6 @@ admin.site.register(Picture,PictureAdmin)
 admin.site.register(Order,OrderAdmin)
 admin.site.register(WechatUser,UserAdmin)
 
-admin.site.register([Address])
+admin.site.register([Address,AccessToken,Payment,Discount])
 admin.site.site_header = '简陋的后台管理系统'
 admin.site.site_title = '简陋的后台管理系统'
